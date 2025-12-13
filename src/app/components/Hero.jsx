@@ -128,7 +128,7 @@ export default function Hero() {
               </motion.div>
 
               <motion.div variants={lineVariants} className="mt-8 flex flex-wrap gap-3">
-                <MagneticButton href="#" variant="primary">Download CV</MagneticButton>
+                <MagneticButton href="/Prathmesh_Pawar_CV.pdf" variant="primary">Download CV</MagneticButton>
                 <MagneticButton href="#projects" variant="outline">View Projects</MagneticButton>
               </motion.div>
             </motion.div>
