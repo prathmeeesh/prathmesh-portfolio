@@ -2,18 +2,18 @@ import Section from "./ui/Section";
 
 export default function Skills() {
   const groups = [
-    { title: "Backend & APIs", items: ["ASP.NET MVC", "C#", "REST APIs", "Core Java"] },
-    { title: "Frontend", items: ["HTML", "CSS", "JavaScript", "AngularJS"] },
-    { title: "Databases & Data", items: ["SQL Server", "MySQL", "Reporting", "Data Modelling"] },
-    { title: "Tools & Practices", items: ["Git/GitHub", "Visual Studio", "Agile", "Azure (learning)"] },
+    { title: "Commercial background", items: ["C#/.NET", "ASP.NET MVC", "JavaScript", "SQL", "HTML/CSS", "Bootstrap"] },
+    { title: "Backend project work", items: ["ASP.NET Core", "REST APIs", "EF Core", "JWT", "Swagger/OpenAPI"] },
+    { title: "Databases & tools", items: ["SQL Server", "MySQL", "PostgreSQL (project)", "Git/GitHub", "Visual Studio"] },
+    { title: "MSc & current focus", items: ["AI-enabled applications", "Cloud computing", "Data-intensive systems", "Software architecture"] },
   ];
 
   return (
     <Section
       id="skills"
       kicker="Skills"
-      title="Tech stack & capabilities"
-      subtitle="A full-stack toolkit aligned to .NET enterprise roles in the UK."
+      title="Technologies and engineering focus"
+      subtitle="Commercial experience is distinguished from project work and current study."
     >
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {groups.map((g) => (

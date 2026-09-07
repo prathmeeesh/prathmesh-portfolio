@@ -10,8 +10,8 @@ export default function Section({ id, kicker, title, subtitle, children }) {
         viewport={{ once: true, amount: 0.22 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
       >
-        <div className="text-[11px] tracking-[0.18em] uppercase text-blue-400">{kicker}</div>
-        <div className="mt-2 text-xl md:text-2xl font-semibold">{title}</div>
+        <div className="text-[11px] uppercase text-blue-400">{kicker}</div>
+        <h2 className="mt-2 text-xl md:text-2xl font-semibold">{title}</h2>
         {subtitle ? <div className="mt-2 text-sm text-gray-400 max-w-3xl">{subtitle}</div> : null}
         <div className="mt-6">{children}</div>
       </motion.div>

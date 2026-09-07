@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, useScroll } from "framer-motion";
 
 const links = [
@@ -15,8 +15,6 @@ export default function Navbar() {
   const [active, setActive] = useState("about");
   const [scrolled, setScrolled] = useState(false);
   const { scrollYProgress } = useScroll();
-
-  const observers = useMemo(() => ({ current: null }), []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -40,13 +38,12 @@ export default function Navbar() {
     );
 
     sections.forEach((s) => obs.observe(s));
-    observers.current = obs;
 
     return () => {
       window.removeEventListener("scroll", onScroll);
       obs.disconnect();
     };
-  }, [observers]);
+  }, []);
 
   return (
     <header className="sticky top-0 z-[60]">
@@ -67,17 +64,17 @@ export default function Navbar() {
         <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between gap-4">
           <a href="#top" className="flex items-center gap-3">
             <div className="h-9 w-9 rounded-full p-[2px] bg-[conic-gradient(from_180deg,#22c55e,#06b6d4,#3b82f6,#22c55e)]">
-              <div className="h-full w-full rounded-full bg-slate-950 flex items-center justify-center text-xs font-semibold tracking-widest">
+              <div className="h-full w-full rounded-full bg-slate-950 flex items-center justify-center text-xs font-semibold">
                 PP
               </div>
             </div>
             <div className="leading-tight">
               <div className="text-sm font-semibold">Prathmesh Pawar</div>
-              <div className="text-[11px] text-gray-400">Full Stack .NET Developer</div>
+              <div className="text-[11px] text-gray-400">Software Developer | C#/.NET</div>
             </div>
           </a>
 
-          <nav className="hidden md:flex items-center gap-6 text-xs text-gray-300">
+          <nav aria-label="Main navigation" className="hidden md:flex items-center gap-6 text-xs text-gray-300">
             {links.map((l) => (
               <a
                 key={l.id}
@@ -99,9 +96,14 @@ export default function Navbar() {
             href="#contact"
             className="text-xs rounded-full px-4 py-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:brightness-110 transition"
           >
-            Hire Me
+            Contact
           </a>
         </div>
+        <nav aria-label="Mobile navigation" className="md:hidden flex gap-5 overflow-x-auto px-4 pb-3 text-xs text-gray-300">
+          {links.map((link) => (
+            <a key={link.id} href={`#${link.id}`} className="shrink-0 py-2 hover:text-white">{link.label}</a>
+          ))}
+        </nav>
       </div>
     </header>
   );

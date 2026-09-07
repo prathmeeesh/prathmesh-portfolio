@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Prathmesh Pawar - Developer Portfolio
 
-## Getting Started
+Next.js and React portfolio for my C#/.NET software development background, public projects and current CV.
 
-First, run the development server:
+[Live portfolio](https://prathmesh-portfolio.vercel.app)
+
+## Local Development
+
+Use Node.js 20.9 or newer and npm.
 
 ```bash
+npm ci
+npm run lint
+npm run build
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The development server defaults to [localhost:3000](http://localhost:3000). If that port is occupied, use `npm run dev -- --port 3001`.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+This repository uses JavaScript and JSX. There is no standalone TypeScript typecheck or automated test suite; lint and build results must not be described as TypeScript or test coverage.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Content and Evidence
 
-## Learn More
+- Page metadata is in `src/app/layout.js`; page sections are in `src/app/components/`.
+- Project cards link only to public repositories. Issue Tracker API is labelled a prototype: its local authentication hardening and automated tests have not yet been published. Library API is described only in terms of the registration, login and book endpoints present in its public source.
+- No employer source code or private university repository is published or linked here.
+- `public/Prathmesh_Pawar_CV.pdf` is the existing Software Engineer CV updated on 5 September 2026, copied unchanged from `Prathmesh_Pawar_AI_Software_Engineer_CV.pdf`. Its established download URL is retained.
+- Contact links use email, telephone and public profiles. There is no message-submission backend.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Before changing project claims, check source code and public repository visibility. Confirm CV provenance before replacing the download. A successful local build does not establish that a deployment has succeeded.

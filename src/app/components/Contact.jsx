@@ -1,3 +1,4 @@
+import { Download, Github, Mail } from "lucide-react";
 import Section from "./ui/Section";
 
 export default function Contact() {
@@ -5,43 +6,51 @@ export default function Contact() {
     <Section
       id="contact"
       kicker="Contact"
-      title="Let’s work together"
-      subtitle="For roles in the UK (graduate/junior .NET, full stack, data-driven teams), reach out."
+      title="Discuss a software engineering opportunity"
+      subtitle="Open to UK software developer, .NET and backend engineering roles."
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <div className="rounded-2xl border border-slate-300/20 bg-slate-950/45 backdrop-blur p-5">
-          <div className="text-sm font-semibold">Reach out</div>
-          <p className="mt-3 text-xs text-gray-300 leading-6">
-            Open to UK graduate/junior roles and software engineering opportunities.
-          </p>
-          <div className="mt-4 text-xs text-gray-200 space-y-2">
-            <div><span className="text-gray-400">Email:</span> prathmeshwork01@gmail.com</div>
-            <div><span className="text-gray-400">Phone:</span> +44 7727 091049</div>
+          <h3 className="text-sm font-semibold">Get in touch</h3>
+          <div className="mt-4 text-xs text-gray-200 space-y-4">
+            <a className="flex items-center gap-2 text-blue-200 underline decoration-dotted break-all" href="mailto:prathmeshwork01@gmail.com">
+              <Mail size={16} className="shrink-0" aria-hidden="true" />
+              prathmeshwork01@gmail.com
+            </a>
             <div>
-              <span className="text-gray-400">LinkedIn:</span>{" "}
-              <a className="text-blue-200 underline decoration-dotted" href="https://www.linkedin.com/in/prathmesh-pawar-29b5a7228" target="_blank" rel="noreferrer">
-                prathmesh-pawar-29b5a7228
-              </a>
+              <span className="text-gray-400">Phone:</span>{" "}
+              <a className="text-blue-200 underline decoration-dotted" href="tel:+447727091049">+44 7727 091049</a>
             </div>
+            <a
+              className="inline-block text-blue-200 underline decoration-dotted"
+              href="https://linkedin.com/in/prathmesh-pawar-29b5a7228"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn profile
+            </a>
           </div>
         </div>
-
         <div className="rounded-2xl border border-slate-300/20 bg-slate-950/45 backdrop-blur p-5">
-          <div className="text-sm font-semibold">Message form</div>
-          <p className="mt-2 text-xs text-gray-400">
-            Front-end only (we can connect Formspree or a Next.js API route next).
+          <h3 className="text-sm font-semibold">CV and public work</h3>
+          <p className="mt-3 text-xs text-gray-300 leading-6">
+            My CV covers commercial .NET experience, personal projects and MSc study.
           </p>
-          <form className="mt-4 space-y-3">
-            <input className="w-full rounded-xl bg-black/40 border border-slate-300/20 px-3 py-2 text-xs outline-none focus:border-blue-400/60"
-              placeholder="Your name" />
-            <input className="w-full rounded-xl bg-black/40 border border-slate-300/20 px-3 py-2 text-xs outline-none focus:border-blue-400/60"
-              placeholder="Email" type="email" />
-            <textarea className="w-full rounded-xl bg-black/40 border border-slate-300/20 px-3 py-2 text-xs outline-none focus:border-blue-400/60 min-h-[110px]"
-              placeholder="Message" />
-            <button type="button" className="text-xs rounded-full px-5 py-2 bg-gradient-to-r from-blue-600 to-cyan-500 hover:brightness-110 transition">
-              Send
-            </button>
-          </form>
+          <div className="mt-4 flex flex-wrap gap-4">
+            <a className="inline-flex items-center gap-2 text-xs text-blue-200 underline decoration-dotted" href="/Prathmesh_Pawar_CV.pdf" download>
+              <Download size={16} aria-hidden="true" />
+              Download CV
+            </a>
+            <a
+              className="inline-flex items-center gap-2 text-xs text-blue-200 underline decoration-dotted"
+              href="https://github.com/prathmeeesh"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Github size={16} aria-hidden="true" />
+              GitHub profile
+            </a>
+          </div>
         </div>
       </div>
     </Section>

@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import gsap from "gsap";
 import MagneticButton from "./ui/MagneticButton";
+import { Download, ArrowDown } from "lucide-react";
 
 function clamp(n, min, max) {
   return Math.max(min, Math.min(max, n));
@@ -99,28 +100,28 @@ export default function Hero() {
       <div className="relative z-[1] mx-auto max-w-6xl px-4 pt-20 pb-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
           <motion.div style={{ y: yTitle }} className="will-change-transform">
-            <div className="text-[11px] tracking-[0.18em] uppercase text-blue-400">
+            <div className="text-[11px] uppercase text-blue-400">
               Leicester · United Kingdom
             </div>
 
             <motion.div variants={containerVariants} initial="hidden" animate="show" className="mt-4">
               <motion.h1 variants={lineVariants} className="text-4xl md:text-5xl font-bold leading-[1.12]">
-                Building secure, scalable
+                Prathmesh Pawar
               </motion.h1>
-              <motion.h1 variants={lineVariants} className="text-4xl md:text-5xl font-bold leading-[1.12]">
+              <motion.p variants={lineVariants} className="mt-3 text-2xl md:text-3xl font-semibold leading-snug">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-300 to-green-300">
-                  .NET applications
-                </span>{" "}
-                for the real world.
-              </motion.h1>
+                  Software Developer
+                </span>
+                <span className="block mt-2 text-lg text-gray-300">C#/.NET | Backend Development</span>
+              </motion.p>
 
               <motion.p variants={lineVariants} className="mt-5 text-sm text-gray-300 max-w-xl leading-7">
-                Full Stack .NET Developer and MSc Advanced Computer Science student with 2+ years of experience
-                building healthcare and enterprise web applications using ASP.NET MVC, C#, SQL Server and JavaScript.
+                Software engineer with 2.5+ years of commercial experience across trainee and junior developer roles.
+                My background is in C#, ASP.NET MVC, JavaScript and SQL, with project work in ASP.NET Core and REST APIs.
               </motion.p>
 
               <motion.div variants={lineVariants} className="mt-6 flex flex-wrap gap-2 text-[11px] text-gray-300">
-                {["Open to UK roles", "ASP.NET MVC", "C#", "SQL Server", "REST APIs", "Cloud (Azure - learning)"].map((t) => (
+                {["Open to UK roles", "C#/.NET", "ASP.NET Core", "REST APIs", "SQL", "AI-enabled applications"].map((t) => (
                   <span key={t} className="px-3 py-1 rounded-full border border-slate-400/30 bg-slate-950/40 backdrop-blur">
                     {t}
                   </span>
@@ -128,8 +129,12 @@ export default function Hero() {
               </motion.div>
 
               <motion.div variants={lineVariants} className="mt-8 flex flex-wrap gap-3">
-                <MagneticButton href="/Prathmesh_Pawar_CV.pdf" variant="primary">Download CV</MagneticButton>
-                <MagneticButton href="#projects" variant="outline">View Projects</MagneticButton>
+                <MagneticButton href="/Prathmesh_Pawar_CV.pdf" variant="primary" download>
+                  <Download size={16} aria-hidden="true" /> Download CV
+                </MagneticButton>
+                <MagneticButton href="#projects" variant="outline">
+                  <ArrowDown size={16} aria-hidden="true" /> View Projects
+                </MagneticButton>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -142,23 +147,23 @@ export default function Hero() {
                 transition: "transform 120ms ease-out",
               }}
             >
-              <div className="flex items-center justify-between text-[11px] text-blue-100/90">
+              <div className="flex flex-wrap items-center justify-between gap-3 text-[11px] text-blue-100/90">
                 <div className="flex items-center gap-2">
                   <span className="h-2 w-2 rounded-full bg-green-400 shadow-[0_0_0_6px_rgba(34,197,94,0.18)]" />
-                  Actively seeking graduate & junior roles
+                  Open to UK software development roles
                 </div>
                 <span className="px-3 py-1 rounded-full border border-blue-200/30 bg-slate-950/60">
-                  MSc Advanced Computer Science
+                  University of Leicester
                 </span>
               </div>
 
               <div className="mt-4 pt-4 border-t border-slate-300/15 text-sm text-gray-200">
-                <span className="font-semibold">Production modules</span> across healthcare workflows:
-                Surrogacy, Pharmacy, Inventory, HR, and HealthCard systems—clean data models, APIs, and UI.
+                <span className="font-semibold">MSc Advanced Computer Science</span>, currently in progress.
+                Supporting interests include AI-enabled applications, cloud computing, data and software architecture.
               </div>
 
               <div className="mt-4 flex flex-wrap gap-2 text-[11px]">
-                {["ASP.NET MVC", "AngularJS", "SQL", "Reporting", "Enterprise UI"].map((t) => (
+                {["Backend APIs", "Relational databases", "Application integration"].map((t) => (
                   <span key={t} className="px-3 py-1 rounded-full border border-slate-400/25 bg-slate-950/60">
                     {t}
                   </span>

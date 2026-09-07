@@ -5,19 +5,20 @@ export default function About() {
     <Section
       id="about"
       kicker="About"
-      title="Full Stack Developer with a data-driven mindset"
-      subtitle="I build production-ready systems with clean data models, APIs, and modern, responsive UI."
+      title="Software development grounded in C# and .NET"
+      subtitle="Commercial ASP.NET MVC experience, modern backend project work and ongoing postgraduate study."
     >
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         <div className="lg:col-span-2 rounded-2xl border border-slate-300/20 bg-slate-950/45 backdrop-blur p-5">
           <p className="text-sm text-gray-300 leading-7">
-            I am a Full Stack .NET Developer and MSc Advanced Computer Science student at the University of Leicester.
-            I have 2+ years of experience building secure, scalable healthcare and enterprise applications using
-            ASP.NET MVC, C#, SQL Server, JavaScript and AngularJS.
+            My commercial background includes trainee and junior software developer roles at Acssel Infotech Pvt. Ltd.
+            I worked on C#/ASP.NET MVC applications, SQL-backed business logic, reports and JavaScript interfaces.
+            Employer-owned application source code is not published in this portfolio.
           </p>
           <p className="mt-4 text-sm text-gray-300 leading-7">
-            I’m actively developing cloud-ready backend skills (Azure fundamentals, deployment patterns, CI/CD)
-            and expanding into data engineering workflows (ETL, analytics, reporting).
+            Alongside my MSc Advanced Computer Science at the University of Leicester, I am developing
+            ASP.NET Core and REST API projects and exploring AI-enabled applications, cloud computing,
+            data-intensive systems and software architecture.
           </p>
         </div>
 
@@ -25,8 +26,8 @@ export default function About() {
           <div className="text-sm font-semibold">Quick facts</div>
           <div className="mt-3 space-y-2 text-xs text-gray-300">
             <div><span className="text-gray-400">Location:</span> Leicester, UK</div>
-            <div><span className="text-gray-400">Primary stack:</span> ASP.NET MVC, C#, SQL</div>
-            <div><span className="text-gray-400">Focus:</span> Cloud + Data + Scalable APIs</div>
+            <div><span className="text-gray-400">Primary stack:</span> C#/.NET, ASP.NET MVC/Core, SQL</div>
+            <div><span className="text-gray-400">Focus:</span> Backend APIs and AI-enabled applications</div>
             <div><span className="text-gray-400">Availability:</span> Open to UK roles</div>
           </div>
         </div>

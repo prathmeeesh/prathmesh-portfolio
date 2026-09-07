@@ -1,7 +1,7 @@
 "use client";
 import { useRef } from "react";
 
-export default function MagneticButton({ href, children, variant = "primary" }) {
+export default function MagneticButton({ href, children, variant = "primary", download }) {
   const ref = useRef(null);
 
   const onMove = (e) => {
@@ -27,8 +27,8 @@ export default function MagneticButton({ href, children, variant = "primary" }) 
       : "border border-slate-300/30 bg-slate-950/35 hover:bg-slate-950/70 text-gray-200";
 
   return (
-    <a href={href} className={`${base} ${styles}`} onPointerMove={onMove} onPointerLeave={onLeave}>
-      <span ref={ref} className="inline-block transition-transform duration-150">
+    <a href={href} download={download} className={`${base} ${styles}`} onPointerMove={onMove} onPointerLeave={onLeave}>
+      <span ref={ref} className="inline-flex items-center gap-2 transition-transform duration-150">
         {children}
       </span>
     </a>
