@@ -4,7 +4,7 @@ A personal software engineering portfolio built with Next.js, React and an origi
 
 [Existing live portfolio](https://prathmesh-portfolio.vercel.app) · [Folio read-only catalogue](https://prathmesh-library.runasp.net/)
 
-This redesign is a local candidate. It has not been merged, pushed or deployed. The live portfolio can therefore show the previous design.
+The Engineering Observatory redesign is published on the `codex/portfolio-observatory` feature branch and available as a Vercel preview. It has not yet been released to production; the live portfolio continues to use `main`.
 
 ## Experience
 
@@ -61,8 +61,8 @@ The owner confirms Folio is live at MonsterASP.NET as a synthetic read-only cata
 
 MSc award status is explicitly unconfirmed. BSc details come from the existing CV. Smart Research Assistant remains private academic work with no fabricated repository or demo. No employer code or private assessment materials are included.
 
-The original CV is preserved byte for byte, as are email, telephone and LinkedIn destinations. No contact form database, fake chatbot, testimonials, live telemetry or fabricated project metrics are present. See docs/CONTENT_EVIDENCE.md and docs/REDESIGN.md.
+The portfolio CV at `/Prathmesh_Pawar_CV.pdf` has been updated to the current AI Software Engineer / Applied AI Developer CV. Contact details and links should be checked against that CV. No contact form database, fake chatbot, testimonials, live telemetry or fabricated project metrics are present. See docs/CONTENT_EVIDENCE.md and docs/REDESIGN.md.
 
 ## Publication boundary
 
-The Folio content from draft portfolio PR #1 (41d92effe037b51c5743b6482ab83e560e90dc9f) is preserved semantically, including demo restrictions and public-source status. This local branch starts from main bcadc1a; it does not silently merge, amend or replace the draft PR. Reconcile the two branches during an explicitly approved publication review. No Vercel configuration or external deployment was changed.
+The Folio content from portfolio PR #1 (merged into `main` at 2994a5c) is preserved, including public-demo restrictions and original API-source status. The feature branch has incorporated `origin/main` and is deployed to a Vercel preview. Production remains unchanged until the reviewed feature branch is merged into `main`.
