@@ -1,43 +1,77 @@
 import Section from "./ui/Section";
-
 export default function Experience() {
   return (
     <Section
       id="experience"
-      kicker="Experience"
-      title="Professional experience & education"
-      subtitle="2.5+ years of commercial experience across trainee and junior developer roles, followed by MSc study."
+      kicker="04 / Professional journey"
+      title={
+        <>
+          Built on real <span className="serif-word">experience.</span>
+        </>
+      }
+      subtitle="Approximately 2.5 years of commercial development, including an internship."
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <div className="rounded-2xl border border-slate-300/20 bg-slate-950/45 backdrop-blur p-5">
-          <div className="text-sm font-semibold">Junior Software Developer</div>
-          <div className="text-xs text-gray-400">Acssel Infotech Pvt. Ltd. · Jul 2023 – Aug 2025</div>
-          <ul className="mt-3 text-xs text-gray-300 space-y-2 list-disc pl-5">
-            <li>Built modules for HealthCard, Surrogacy, Pharmacy, Inventory, and HR workflows.</li>
-            <li>Implemented backend logic in ASP.NET MVC / C# with SQL Server integrations.</li>
-            <li>Improved usability and reliability via debugging and query optimisation.</li>
-          </ul>
-        </div>
-
-        <div className="rounded-2xl border border-slate-300/20 bg-slate-950/45 backdrop-blur p-5">
-          <h3 className="text-sm font-semibold">Internship Trainee</h3>
-          <div className="text-xs text-gray-400">Acssel Infotech Pvt. Ltd. · Jan 2023 - Jul 2023</div>
-          <ul className="mt-3 text-xs text-gray-300 space-y-2 list-disc pl-5">
-            <li>Contributed to HealthCard application development through supervised modules.</li>
-            <li>Built interfaces with HTML, CSS, JavaScript, Bootstrap and C#.</li>
-            <li>Developed debugging, testing and project communication skills.</li>
-          </ul>
-        </div>
-
-        <div className="rounded-2xl border border-slate-300/20 bg-slate-950/45 backdrop-blur p-5">
-          <h3 className="text-sm font-semibold">MSc Advanced Computer Science</h3>
-          <div className="text-xs text-gray-400">University of Leicester · In progress</div>
-          <ul className="mt-3 text-xs text-gray-300 space-y-2 list-disc pl-5">
-            <li>Focus: advanced software engineering, cloud computing, data-intensive systems and AI.</li>
-            <li>Current project interests include backend APIs and AI-enabled applications.</li>
-          </ul>
-        </div>
+      <div className="timeline">
+        <article className="timeline-entry">
+          <div className="timeline-date mono">
+            JUL 2023 — AUG 2025<span>Commercial / developer role</span>
+          </div>
+          <div className="timeline-content">
+            <h3>Junior Software Developer</h3>
+            <p className="employer">Acssel Infotech Pvt. Ltd.</p>
+            <p>
+              Worked on ASP.NET MVC and C# applications supporting HealthCard,
+              Surrogacy, Pharmacy, Inventory and HR workflows.
+            </p>
+            <ul>
+              <li>
+                Implemented backend business logic and SQL Server integrations.
+              </li>
+              <li>
+                Developed JavaScript interfaces, reports and SQL-backed
+                application features.
+              </li>
+              <li>
+                Investigated defects and worked on query and usability
+                improvements.
+              </li>
+            </ul>
+            <div className="tags">
+              <span>C#</span>
+              <span>ASP.NET MVC</span>
+              <span>SQL Server</span>
+              <span>JavaScript</span>
+            </div>
+          </div>
+        </article>
+        <article className="timeline-entry">
+          <div className="timeline-date mono">
+            JAN 2023 — JUL 2023<span>Commercial / internship</span>
+          </div>
+          <div className="timeline-content">
+            <h3>Internship Trainee</h3>
+            <p className="employer">Acssel Infotech Pvt. Ltd.</p>
+            <p>
+              Contributed to supervised HealthCard application modules and
+              developed practical foundations in web application engineering.
+            </p>
+            <ul>
+              <li>
+                Built interfaces using HTML, CSS, JavaScript and Bootstrap.
+              </li>
+              <li>Supported C# development, debugging and testing tasks.</li>
+              <li>
+                Developed communication and collaboration skills within a
+                software team.
+              </li>
+            </ul>
+          </div>
+        </article>
       </div>
+      <p className="section-footnote">
+        Commercial work is described at a responsibility level. Proprietary
+        employer source code is not published.
+      </p>
     </Section>
   );
 }
