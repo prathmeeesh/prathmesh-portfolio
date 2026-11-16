@@ -22,7 +22,7 @@ This repository uses JavaScript and JSX. There is no standalone TypeScript typec
 ## Content and Evidence
 
 - Page metadata is in `src/app/layout.js`; page sections are in `src/app/components/`.
-- Project cards link only to public repositories. Issue Tracker API is labelled a prototype: its local authentication hardening and automated tests have not yet been published. Library API is described only in terms of the registration, login and book endpoints present in its public source.
+- Project cards link to public repositories, and Folio also links to its [live read-only demonstration](https://prathmesh-library.runasp.net/). Issue Tracker API is labelled a prototype: its local authentication hardening and automated tests have not yet been published. Folio's public demo is deployed with 15 synthetic books, while its repository still shows the earlier API-era source until a separate reviewed source publication.
 - No employer source code or private university repository is published or linked here.
 - `public/Prathmesh_Pawar_CV.pdf` is the existing Software Engineer CV updated on 5 September 2026, copied unchanged from `Prathmesh_Pawar_AI_Software_Engineer_CV.pdf`. Its established download URL is retained.
 - Contact links use email, telephone and public profiles. There is no message-submission backend.
