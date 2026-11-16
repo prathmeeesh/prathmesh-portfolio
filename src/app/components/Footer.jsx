@@ -1,7 +1,13 @@
 export default function Footer() {
   return (
-    <footer className="mx-auto max-w-6xl px-4 py-10 text-[11px] text-gray-500">
-      © {new Date().getFullYear()} Prathmesh Pawar · Next.js · Tailwind v4 · Framer Motion · GSAP
+    <footer className="site-footer shell">
+      <a className="footer-name" href="#top">
+        Prathmesh Pawar <span>↗</span>
+      </a>
+      <p>Thoughtfully engineered. Always evolving.</p>
+      <span className="mono">
+        © {new Date().getFullYear()} / LEICESTER, UK
+      </span>
     </footer>
   );
 }

@@ -12,7 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 const title = "Prathmesh Pawar | Software Developer";
-const description = "C#/.NET software developer with commercial ASP.NET MVC experience, hands-on ASP.NET Core and REST API project work, and interests in AI-enabled applications.";
+const description =
+  "C#/.NET software developer with commercial ASP.NET MVC experience, hands-on ASP.NET Core and REST API project work, and interests in AI-enabled applications.";
 
 export const metadata = {
   metadataBase: new URL("https://prathmesh-portfolio.vercel.app"),
@@ -20,8 +21,21 @@ export const metadata = {
   description,
   authors: [{ name: "Prathmesh Pawar" }],
   alternates: { canonical: "/" },
-  openGraph: { title, description, url: "/", siteName: "Prathmesh Pawar", locale: "en_GB", type: "website" },
-  twitter: { card: "summary", title, description },
+  openGraph: {
+    title,
+    description,
+    url: "/",
+    siteName: "Prathmesh Pawar",
+    locale: "en_GB",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/opengraph-image"],
+  },
+  icons: { icon: "/icon.svg" },
 };
 
 export default function RootLayout({ children }) {
