@@ -211,8 +211,7 @@ export default function Projects() {
             <li>Canvas 2D</li>
           </ul>
           <p className="scope-note">
-            The redesigned version is a local preview. The linked repository may
-            show the previous design until publication.
+            The portfolio source is available on GitHub. Changes to the Engineering Observatory are tested and reviewed before production publication.
           </p>
           <a
             className="text-link"
