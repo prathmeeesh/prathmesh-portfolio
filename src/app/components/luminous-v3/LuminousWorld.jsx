@@ -266,13 +266,13 @@ function TravellingArtifacts() {
 function Scene({ quality, paused }) {
   return <>
     <color attach="background" args={[HORIZON]}/>
-    <fog attach="fog" args={[HORIZON,42,175]}/>
+    <fog attach="fog" args={[HORIZON,60,195]}/>
     <SkyDome/>
-    <hemisphereLight args={["#f4fbff","#8fae9c",1.9]}/>
-    <ambientLight intensity={0.7}/>
-    <directionalLight position={[14,24,10]} intensity={3.4} color="#fff0d6"/>
-    <directionalLight position={[-16,8,14]} intensity={0.9} color="#bfe6ff"/>
-    <pointLight position={[39,13,2]} intensity={62} distance={30} color="#ffdc9b"/>
+    <hemisphereLight args={["#f4fbff","#728a92",1.15]}/>
+    <ambientLight intensity={0.25}/>
+    <directionalLight position={[14,24,10]} intensity={2.1} color="#fff0d6"/>
+    <directionalLight position={[-16,8,14]} intensity={0.6} color="#bfe6ff"/>
+    <pointLight position={[39,13,2]} intensity={36} distance={30} color="#ffdc9b"/>
     <CloudBanks quality={quality} span={STATIONS*SPACING}/>
     <Landmarks quality={quality}/>
     <CameraRail paused={paused}/>
@@ -302,7 +302,7 @@ export default function LuminousWorld({ paused = false, reduced = false, quality
     <Canvas key={quality} frameloop="demand" dpr={low?[0.75,1.15]:[1,1.5]}
       camera={{fov:42,near:0.15,far:260,position:[2,7.3,18]}}
       gl={{antialias:!low,alpha:false,powerPreference:"high-performance"}}
-      onCreated={({gl})=>{gl.outputColorSpace=THREE.SRGBColorSpace;gl.toneMapping=THREE.ACESFilmicToneMapping;gl.toneMappingExposure=1.35;
+      onCreated={({gl})=>{gl.outputColorSpace=THREE.SRGBColorSpace;gl.toneMapping=THREE.ACESFilmicToneMapping;gl.toneMappingExposure=1.05;
         const canvas=gl.domElement;canvas.addEventListener("webglcontextlost",()=>setWebglFailed(true),{once:true});}}
       onError={()=>setWebglFailed(true)}>
       <Scene quality={low?"low":"high"} paused={paused}/>

@@ -1,16 +1,16 @@
 /* Isolated design-study styles: no global selectors that replace the production portfolio. */
-.lv3-page { --ink:#12334b; --muted:#486b80; --cyan:#047f91; --line:rgba(24,91,124,.16); position:relative; min-height:100vh; color:var(--ink); background:#dceef5; font-family:Arial,Helvetica,sans-serif; isolation:isolate; overflow:clip; }
+.lv3-page { --ink:#12334b; --muted:#486b80; --cyan:#047f91; --line:rgba(24,91,124,.16); position:relative; min-height:100vh; color:var(--ink); background:#c8e0e9; font-family:var(--font-geist-sans),Arial,Helvetica,sans-serif; isolation:isolate; overflow:clip; }
 .lv3-page *, .lv3-page *::before, .lv3-page *::after { box-sizing:border-box; }
 .lv3-page button,.lv3-page select { font:inherit; }
 .lv3-page a { color:inherit; text-decoration:none; }
 .lv3-page button { cursor:pointer; }
 .lv3-page :focus-visible { outline:3px solid #067f91; outline-offset:4px; }
-.lv3-sky { position:fixed; inset:0; z-index:0; pointer-events:none; background:radial-gradient(ellipse at 83% 25%,rgba(255,237,190,.85),transparent 43%),radial-gradient(ellipse at 32% 75%,rgba(255,255,255,.9),transparent 56%),linear-gradient(180deg,#a4cddd 0%,#d0e8f1 55%,#f2f5ed 100%); }
+.lv3-sky { position:fixed; inset:0; z-index:0; pointer-events:none; background:radial-gradient(ellipse at 85% 24%,rgba(255,226,164,.44),transparent 42%),radial-gradient(ellipse at 24% 78%,rgba(244,251,254,.54),transparent 52%),linear-gradient(180deg,#85b8cf 0%,#c1dce9 55%,#e4eef1 100%); }
 .lv3-sky::after { content:""; position:absolute; inset:32% -10% -10%; background:radial-gradient(ellipse at 20% 80%,rgba(255,255,255,.55),transparent 50%),radial-gradient(ellipse at 80% 82%,rgba(255,255,255,.62),transparent 52%); filter:blur(22px); }
 .lv3-canvas,.lv3-static-scene { position:fixed; inset:0; width:100%; height:100vh; height:100dvh; z-index:1; pointer-events:none; }
 .lv3-canvas canvas { width:100%; height:100%; display:block; pointer-events:none; }
 .lv3-static-scene { background:linear-gradient(90deg,rgba(230,243,247,.82),rgba(230,243,247,.22)),url('/luminous-v3/cloud-lab-reference.webp') center/cover no-repeat; }
-.lv3-wash { z-index:2; pointer-events:none; position:fixed; inset:0; background:linear-gradient(90deg,rgba(226,242,249,.94) 0%,rgba(225,243,248,.84) 29%,rgba(225,243,248,.08) 67%,transparent 100%); }
+.lv3-wash { z-index:2; pointer-events:none; position:fixed; inset:0; background:linear-gradient(90deg,rgba(229,244,249,.96) 0%,rgba(226,242,247,.86) 25%,rgba(224,242,247,.35) 45%,rgba(224,242,247,.02) 69%,transparent 100%); }
 .lv3-doodle { position:fixed; z-index:3; inset:0; width:100%; height:100%; pointer-events:none; mix-blend-mode:multiply; }
 .lv3-skip { position:fixed; transform:translateY(-180%); left:16px; top:16px; z-index:100; background:#fff; border:2px solid #19778b; padding:12px; }
 .lv3-skip:focus { transform:none; }
@@ -19,8 +19,8 @@
 .lv3-wordmark strong { font-size:45px; font-family:Georgia,serif; line-height:1; font-style:italic; }
 .lv3-wordmark strong span { color:#008f9a; }
 .lv3-monogram { font-size:10px; line-height:1.38; font-weight:700; letter-spacing:.22em; }
-.lv3-nav nav { display:flex; gap:clamp(12px,2vw,35px); font-size:12px; font-weight:700; }
-.lv3-nav nav a:hover { color:#008998; }
+.lv3-nav .lv3-desktop-nav { display:flex; gap:clamp(12px,2vw,35px); font-size:12px; font-weight:700; }
+.lv3-nav a:hover { color:#008998; }
 .lv3-controls { display:flex; align-items:center; gap:8px; }
 .lv3-controls button,.lv3-controls select { color:#16445d; background:rgba(255,255,255,.65); border:1px solid #94b9c6; border-radius:30px; padding:9px 12px; font-size:11px; font-weight:700; }
 .lv3-select-label { color:#335d6c; font-size:10px; font-weight:700; display:flex; align-items:center; gap:6px; }
@@ -72,10 +72,10 @@
 .lv3-footer button { border:0; background:transparent; color:#007f90; font-weight:700; }
 .lv3-sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); }
 @media(max-width:900px) {
- .lv3-nav nav { display:none; }
+ .lv3-nav .lv3-desktop-nav { display:none; }
  .lv3-content { width:min(520px,62vw); }
  .lv3-content .lv3-heading { font-size:clamp(35px,5.9vw,58px); }
- .lv3-wash { background:linear-gradient(90deg,rgba(230,246,250,.96) 0%,rgba(231,246,251,.82) 46%,rgba(231,246,251,.12) 96%); }
+ .lv3-wash { background:linear-gradient(90deg,rgba(232,245,250,.95) 0%,rgba(230,244,250,.77) 40%,rgba(230,244,250,.07) 92%); }
  .lv3-scene-label { right:30px;bottom:14%; }
 }
 @media(max-width:620px) {
@@ -94,7 +94,7 @@
  .lv3-description { max-width:420px; font-size:14px;line-height:1.65; }
  .lv3-kicker { margin-bottom:16px; }
  .lv3-scene-label { right:25px;bottom:16%;font-size:9px; }
- .lv3-wash { background:linear-gradient(180deg,rgba(229,245,249,.96) 0%,rgba(229,245,249,.91) 40%,rgba(231,246,250,.18) 82%,rgba(231,246,250,.09) 100%); }
+ .lv3-wash { background:linear-gradient(180deg,rgba(233,247,251,.97) 0%,rgba(233,247,251,.88) 38%,rgba(231,246,250,.17) 76%,rgba(231,246,250,.02) 100%); }
  .lv3-chapter-nav { top:auto;bottom:65px;right:15px;transform:none;gap:2px; }
  .lv3-chapter-nav button { padding:2px; }
  .lv3-chapter-nav button:not(.lv3-active):nth-child(even) { display:none; }
@@ -106,9 +106,46 @@
  .lv3-tech-caption { margin-top:20px; }
  .lv3-work-grid { gap:7px; }
  .lv3-work { padding:10px 12px; }
- .lv3-work p { display:none; }
+ .lv3-work p { display:block; }
  .lv3-work strong { font-size:13px; }
 }
 @media(prefers-reduced-motion:reduce) {
  .lv3-page *, .lv3-page *::before,.lv3-page *::after {scroll-behavior:auto!important; transition:none!important; animation:none!important; }
+}
+
+/* Quality pass 01 — readable engineering evidence, richer navigation, lighter visual wash. */
+.lv3-mobile-menu { display:none; position:relative; z-index:52; }
+.lv3-mobile-menu summary { cursor:pointer; list-style:none; padding:9px 12px; border:1px solid rgba(30,101,125,.32); border-radius:9px; background:rgba(247,252,254,.86); color:#163b52; font-size:12px; font-weight:700; }
+.lv3-mobile-menu summary::-webkit-details-marker { display:none; }
+.lv3-mobile-menu[open] nav { position:absolute; top:calc(100% + 8px); right:0; width:220px; padding:9px; display:flex; flex-direction:column; gap:2px; border:1px solid rgba(20,94,120,.24); border-radius:14px; box-shadow:0 16px 40px rgba(14,58,78,.17); background:#f4fbfe; }
+.lv3-mobile-menu nav a { display:block; padding:10px 12px; font-size:13px; font-weight:650; border-radius:7px; }
+.lv3-mobile-menu nav a:hover,.lv3-mobile-menu nav a:focus-visible { background:#d9f1f3; }
+.lv3-chapter-work .lv3-content,.lv3-chapter-experience .lv3-content { width:min(650px,55vw); }
+.lv3-work-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; max-width:650px; }
+.lv3-work { border-color:rgba(21,77,96,.24); background:rgba(246,251,253,.94); box-shadow:0 8px 30px rgba(17,64,84,.06); }
+.lv3-work h3 { margin:9px 0 0; font-size:16px; line-height:1.25; letter-spacing:-.035em; }
+.lv3-work .lv3-work-type { color:#086c82; font:700 10px/1.45 ui-monospace,Consolas,monospace; letter-spacing:.07em; }
+.lv3-work p { font-size:12px; line-height:1.6; margin:10px 0; color:#3c5b68; }
+.lv3-work-actions { display:flex; flex-wrap:wrap; gap:5px 13px; margin-top:12px; }
+.lv3-work-actions a { color:#065b77; font-size:11px; font-weight:750; text-decoration:underline; text-underline-offset:3px; }
+.lv3-skills-evidence { margin-top:27px; display:grid; gap:10px; max-width:550px; }
+.lv3-skills-evidence > div { padding:12px 16px; background:rgba(247,252,253,.92); border-left:3px solid #0b99a7; }
+.lv3-skills-evidence h3 { font-size:12px; margin:0 0 6px; }
+.lv3-skills-evidence p { font-size:12px; line-height:1.6; color:#365c70; margin:0; }
+.lv3-career { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:24px; background:transparent; padding:0; border:0; max-width:650px; }
+.lv3-career > div { padding:14px 15px; background:rgba(247,252,254,.93); border:1px solid rgba(40,104,127,.19); border-left:3px solid #159aa7; }
+.lv3-career span { color:#08728a; font:700 10px ui-monospace,Consolas,monospace; letter-spacing:.06em; }
+.lv3-career h3 { margin:8px 0 6px; font-size:13px; }
+.lv3-career p { margin:0; font-size:12px; line-height:1.55; }
+@media(max-width:900px) {
+ .lv3-mobile-menu { display:block; }
+ .lv3-chapter-work .lv3-content,.lv3-chapter-experience .lv3-content { width:min(590px,75vw); }
+}
+@media(max-width:620px) {
+ .lv3-mobile-menu { order:3; }
+ .lv3-mobile-menu[open] nav { right:0; }
+ .lv3-chapter-work .lv3-content,.lv3-chapter-experience .lv3-content { width:100%; }
+ .lv3-work-grid,.lv3-career { grid-template-columns:1fr; }
+ .lv3-career > div { padding:11px 12px; }
+ .lv3-chapter-work,.lv3-chapter-experience { padding-bottom:130px; }
 }

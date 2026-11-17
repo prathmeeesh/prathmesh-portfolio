@@ -23,9 +23,10 @@ const CHAPTERS = [
 ];
 
 const WORK = [
- { name: "Folio", focus: "Library management · .NET · SQL", description: "Full-stack application with a public read-only catalogue demonstration.", href: "https://prathmesh-library.runasp.net/", action: "Open live demo" },
- { name: "Smart AI-driven Research Assistant", focus: "MSc research · LLM integration", description: "Academic-source discovery, grounded AI summaries and research workflows; not presented as a public production deployment.", href: "https://prathmesh-portfolio.vercel.app/#projects", action: "Read project overview" },
- { name: "Issue Tracker API", focus: "ASP.NET Core · JWT · SQL", description: "Role-aware issue workflows, backend services and data persistence.", href: "https://github.com/prathmeeesh/IssueTrackerApi", action: "View repository" },
+ { name: "Folio", focus: "FULL-STACK / ASP.NET CORE", description: "Library catalogue, authentication, lending rules and SQL-backed administration. The public demo intentionally enables browsing and search only.", href: "/work/folio", action: "Read engineering case study", secondary: { href: "https://prathmesh-library.runasp.net/", label: "Try read-only catalogue" } },
+ { name: "Smart AI-driven Research Assistant", focus: "ACADEMIC / APPLIED AI", description: "MSc individual project: research discovery, evidence-aware summaries and paper organisation. Private academic work, with no public deployment claimed.", href: "#contact", action: "Discuss the research" },
+ { name: "Issue Tracker API", focus: "BACKEND / REST API", description: "An API prototype for issue and project workflows using ASP.NET Core, SQL and authorisation. See the public source, not an invented live deployment.", href: "https://github.com/prathmeeesh/IssueTrackerApi", action: "Inspect API repository" },
+ { name: "Engineering Observatory", focus: "CREATIVE ENGINEERING / NEXT.JS", description: "Scroll-directed 3D technical storytelling, accessible fallbacks and a documented implementation. This V3 scene is a visual experiment, not live telemetry.", href: "/work/observatory", action: "Read engineering case study" },
 ];
 
 export default function LuminousExperience() {
@@ -82,7 +83,8 @@ export default function LuminousExperience() {
    <a className="lv3-skip" href="#origin">Skip to portfolio content</a>
    <header className="lv3-nav">
      <button className="lv3-wordmark" type="button" onClick={()=>goto("origin")} aria-label="Go to start"><strong>p<span>.</span></strong><span className="lv3-monogram">PRATHMESH<br/>PAWAR</span></button>
-     <nav aria-label="Main navigation"><a href="#origin">Journey</a><a href="#work">Work</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+     <nav className="lv3-desktop-nav" aria-label="Main navigation"><a href="#origin">Journey</a><a href="#work">Work</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+     <details className="lv3-mobile-menu"><summary>Menu</summary><nav aria-label="Mobile navigation"><a href="#origin">Journey</a><a href="#work">Work</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav></details>
      <div className="lv3-controls"><label className="lv3-select-label">Quality <select aria-label="Render quality" value={quality} onChange={e=>setQuality(e.target.value)}><option value="auto">Auto</option><option value="low">Light</option><option value="high">High</option></select></label><button type="button" onClick={()=>setPaused(s=>!s)} aria-label={paused?"Resume 3D world":"Pause 3D world"}>{paused?"Play":"Pause"}</button></div>
    </header>
    <div className="lv3-topline"><span>ENGINEERING OBSERVATORY / LUMINOUS STUDY</span><span>CONTINUOUS 3D JOURNEY</span></div>
@@ -97,12 +99,12 @@ export default function LuminousExperience() {
            ?<h1 id={`${c.id}-heading`} className="lv3-heading">{c.title}<br/><em>{c.accent}</em></h1>
            :<h2 id={`${c.id}-heading`} className="lv3-heading">{c.title}<br/><em>{c.accent}</em></h2>}
          <p className="lv3-description">{c.body}</p>
-         {i===0&&<><p className="lv3-intro">PRATHMESH PAWAR <span> / </span> SOFTWARE ENGINEER</p><p className="lv3-subintro">C#/.NET foundations · Applied AI curiosity · User-centred systems</p></>}
+         {i===0&&<><p className="lv3-intro">PRATHMESH PAWAR <span> / </span> SOFTWARE ENGINEER</p><p className="lv3-subintro">Commercial C#/.NET engineering · Backend systems · Applied AI projects</p></>}
          {i===8&&<div className="lv3-buttons"><a className="lv3-primary" href="https://prathmesh-library.runasp.net/" target="_blank" rel="noreferrer">Explore the Folio demo ↗</a><span className="lv3-note">Read-only public catalogue</span></div>}
-         {i===9&&<div className="lv3-work-grid">{WORK.map(w=><a href={w.href} key={w.name} target="_blank" rel="noreferrer" className="lv3-work"><strong>{w.name}</strong><span>{w.focus}</span><p>{w.description}</p><small>{w.action} ↗</small></a>)}</div>}
-         {i===10&&<div className="lv3-skills">{["C#", ".NET", "ASP.NET Core", "SQL Server", "PostgreSQL", "JavaScript", "Python", "Applied AI", "LLM APIs"].map(t=><span key={t}>{t}</span>)}</div>}
-         {i===11&&<div className="lv3-career"><p><strong>Acssel Infotech Pvt. Ltd.</strong> — Junior Software Developer and Internship Trainee.</p><p><strong>University of Leicester</strong> — MSc Advanced Computer Science (award pending).</p></div>}
-         {i===12&&<div className="lv3-buttons lv3-contact-links"><a className="lv3-primary" href="https://www.linkedin.com/in/prathmesh-pawar-29b5a7228/" target="_blank" rel="noreferrer">Connect on LinkedIn ↗</a><a href="https://github.com/prathmeeesh" target="_blank" rel="noreferrer">GitHub ↗</a><a href="/Prathmesh_Pawar_CV.pdf" download>Download CV ↓</a></div>}
+         {i===9&&<div className="lv3-work-grid">{WORK.map(w=><article key={w.name} className="lv3-work"><span className="lv3-work-type">{w.focus}</span><h3>{w.name}</h3><p>{w.description}</p><div className="lv3-work-actions"><a href={w.href} target={w.href.startsWith("http")?"_blank":undefined} rel={w.href.startsWith("http")?"noopener noreferrer":undefined}>{w.action} ↗</a>{w.secondary&&<a href={w.secondary.href} target="_blank" rel="noopener noreferrer">{w.secondary.label} ↗</a>}</div></article>)}</div>}
+         {i===10&&<div className="lv3-skills-evidence"><div><h3>Commercial experience</h3><p>C# · ASP.NET MVC · SQL Server · JavaScript · MySQL</p></div><div><h3>Personal engineering</h3><p>ASP.NET Core · EF Core · PostgreSQL · REST APIs · Next.js</p></div><div><h3>Academic and AI projects</h3><p>LLM integration · Research discovery · Data-intensive systems</p></div></div>}
+         {i===11&&<div className="lv3-career" aria-label="Professional experience and education"><div><span>JUL 2023 — AUG 2025</span><h3>Junior Software Developer</h3><p>Acssel Infotech · C#, ASP.NET MVC, SQL Server and JavaScript application development.</p></div><div><span>JAN 2023 — JUL 2023</span><h3>Internship Trainee</h3><p>Acssel Infotech · Web interfaces, C# development support, debugging and testing.</p></div><div><span>2025 — 2026</span><h3>MSc Advanced Computer Science</h3><p>University of Leicester · Degree award not yet confirmed.</p></div><div><span>2020 — 2023</span><h3>BSc Information Technology</h3><p>Pillai College · Data Science specialisation.</p></div></div>}
+         {i===12&&<div className="lv3-buttons lv3-contact-links"><a className="lv3-primary" href="mailto:prathmeshwork01@gmail.com">Email me ↗</a><a href="https://www.linkedin.com/in/prathmesh-pawar-29b5a7228/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="https://github.com/prathmeeesh" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="/Prathmesh_Pawar_CV.pdf" download>Download CV ↓</a></div>}
          {i===0&&<div className="lv3-buttons"><button type="button" className="lv3-primary" onClick={()=>goto("source")}>Explore the journey ↓</button><button type="button" className="lv3-secondary" onClick={()=>goto("work")}>View my work ↗</button></div>}
          <div className="lv3-tech-caption">{c.code}</div>
        </div>
