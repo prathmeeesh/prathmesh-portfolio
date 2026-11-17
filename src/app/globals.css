@@ -136,10 +136,20 @@ summary:focus-visible,
   position: sticky;
   top: 0;
   z-index: 50;
-  background: #080c12e8;
+  background: #080f1dc9;
   backdrop-filter: blur(18px);
   border-bottom: 1px solid #26313e88;
 }
+.portfolio-content { position: relative; background: linear-gradient(#080e18d9, #080c12f2 35%); }
+.study-page { padding-block: 55px 90px; max-width: 1000px; }
+.study-page header { margin: 70px 0; max-width: 800px; }
+.study-page h1 { font-size: clamp(38px,6vw,76px); letter-spacing: -.055em; margin-block: 22px; }
+.study-intro { font-size: 19px; color: var(--muted); line-height: 1.8; margin-bottom: 25px; }
+.study-sections section { display: grid; grid-template-columns: 70px 1fr; border-top: 1px solid var(--line); padding: 35px 0; }
+.study-sections h2 { font-size: 24px; margin-bottom: 18px; }
+.study-sections p:not(.eyebrow) { color: var(--muted); max-width: 700px; line-height: 1.9; }
+.study-page footer { display: flex; gap: 25px; flex-wrap: wrap; align-items: center; margin-top: 40px; }
+@media(max-width:600px) { .study-sections section { grid-template-columns: 35px 1fr; } .study-intro {font-size:16px;} }
 .nav-inner {
   display: flex;
   align-items: center;

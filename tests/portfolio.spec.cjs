@@ -127,7 +127,7 @@ test("responsive layout, sampled accessibility and visual evidence", async ({
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/");
   await page.evaluate(() => document.fonts.ready);
-  await expect(page.locator(".observatory canvas")).toBeVisible();
+  await expect(page.getByTestId("engineering-universe")).toHaveAttribute("data-mode", "static");
   expect(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= window.innerWidth,

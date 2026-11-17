@@ -1,5 +1,5 @@
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
+import EngineeringWorld from "./components/world/EngineeringWorld";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
@@ -17,13 +17,15 @@ export default function Page() {
       </a>
       <Navbar />
       <main id="main">
-        <Hero />
-        <Projects />
-        <About />
-        <Skills />
-        <Experience />
-        <Education />
-        <Contact />
+        <EngineeringWorld />
+        <div className="portfolio-content">
+          <Projects />
+          <About />
+          <Skills />
+          <Experience />
+          <Education />
+          <Contact />
+        </div>
       </main>
       <Footer />
       <ScrollReveal />

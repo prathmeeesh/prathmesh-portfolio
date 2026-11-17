@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   ArrowUpRight,
   ArrowRight,
@@ -75,9 +76,10 @@ export default function Projects() {
           <p className="scope-note">
             Public demo: synthetic catalogue, browsing and search only. Login,
             registration, borrowing, returns and administration are disabled.
-            The complete application source is local and awaits reviewed
-            publication.
+            The linked repository is the original API source, distinct from
+            the full .NET 10 application demonstrated here.
           </p>
+          <Link className="text-link" href="/work/folio">Read the Folio case study <ArrowRight size={16}/></Link>
         </div>
         <figure className="folio-visual">
           <div className="preview-chrome">
@@ -202,17 +204,18 @@ export default function Projects() {
           <h3>This digital workspace</h3>
           <p>
             A Next.js portfolio combining server-rendered content with a
-            lightweight interactive observatory, responsive layouts and
+            continuous 3D engineering world, responsive layouts and
             accessible motion.
           </p>
           <ul className="tags">
             <li>Next.js</li>
             <li>React</li>
-            <li>Canvas 2D</li>
+            <li>Three.js / WebGL</li>
           </ul>
           <p className="scope-note">
             The portfolio source is available on GitHub. Changes to the Engineering Observatory are tested and reviewed before production publication.
           </p>
+          <Link className="text-link" href="/work/observatory">Read the Observatory case study <ArrowRight size={16}/></Link>
           <a
             className="text-link"
             href="https://github.com/prathmeeesh/prathmesh-portfolio"

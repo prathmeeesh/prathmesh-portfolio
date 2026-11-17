@@ -3,10 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, Pause, Play, X } from "lucide-react";
 import { useMotionPreference } from "./MotionProvider";
 const links = [
+  ["journey", "Journey"],
   ["projects", "Work"],
   ["about", "About"],
   ["skills", "Expertise"],
-  ["experience", "Journey"],
+  ["experience", "Experience"],
   ["contact", "Contact"],
 ];
 export default function Navbar() {
