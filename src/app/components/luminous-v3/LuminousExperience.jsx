@@ -33,8 +33,11 @@ export default function LuminousExperience() {
  const [quality, setQuality] = useState("auto");
  const [reduced, setReduced] = useState(false);
  const [active, setActive] = useState(0);
- const [progress, setProgress] = useState(0);
  const activeRef = useRef(0);
+ // Scroll progress changes every frame, so it is written straight to the DOM (compositor-only
+ // transform + ARIA value) instead of React state; React re-renders only when the chapter changes.
+ const progressRef = useRef(null);
+ const progressFillRef = useRef(null);
 
  useEffect(() => {
   const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -57,8 +60,9 @@ export default function LuminousExperience() {
     });
     if (best !== activeRef.current) {activeRef.current = best;setActive(best);}
     const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
-    const nextProgress = window.scrollY / max;
-    setProgress(Math.round(nextProgress * 100));
+    const nextProgress = Math.min(1, Math.max(0, window.scrollY / max));
+    progressFillRef.current?.style.setProperty("transform", `scaleY(${nextProgress.toFixed(4)})`);
+    progressRef.current?.setAttribute("aria-valuenow", String(Math.round(nextProgress * 100)));
    });
   };
   sync();window.addEventListener("scroll", sync, { passive:true });window.addEventListener("resize",sync);
@@ -83,7 +87,7 @@ export default function LuminousExperience() {
    </header>
    <div className="lv3-topline"><span>ENGINEERING OBSERVATORY / LUMINOUS STUDY</span><span>CONTINUOUS 3D JOURNEY</span></div>
    <aside className="lv3-chapter-nav" aria-label="Journey chapter navigation">{CHAPTERS.map((c,i)=><button type="button" key={c.id} className={active===i?"lv3-active":""} onClick={()=>goto(c.id)} aria-label={`Go to ${c.name}`} title={c.name}><span className="lv3-chapter-dot"/><span className="lv3-chapter-number">{c.no}</span></button>)}</aside>
-   <div className="lv3-progress" role="progressbar" aria-label="Portfolio progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress}><span style={{height:`${progress}%`}}/></div>
+   <div className="lv3-progress" role="progressbar" aria-label="Portfolio progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={0} ref={progressRef} data-testid="lv3-progress"><span ref={progressFillRef}/></div>
    <main className="lv3-main">
      {CHAPTERS.map((c,i)=><section id={c.id} data-lv3-chapter key={c.id} className={`lv3-chapter lv3-chapter-${c.id}`} aria-labelledby={`${c.id}-heading`}>
        <div className="lv3-content">

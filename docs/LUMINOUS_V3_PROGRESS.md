@@ -62,7 +62,7 @@ The full suite was not re-run at this checkpoint. Only V3 files and `/observator
 ### Open items
 - **Homepage switch.** `/` still serves V2. The V3 homepage version is saved in `artifacts/v3-homepage-switch-backup/page.jsx`. Promoting V3 needs an explicit decision. The V2 `portfolio` and `universe` specs target `/` and would need to point at `/observatory-v2`.
 - **Image provenance.** The three `public/luminous-v3/*-reference.webp` images have no recorded source or licence. Only `cloud-lab-reference.webp` is used, as the reduced-motion or WebGL-failure background. Confirm it is original or licensed before promoting V3, or replace it with a render of the procedural scene.
-- **Scroll re-renders.** `setProgress` still runs on every scrolled frame. Values are rounded to whole percent, so React skips most re-renders, but the Milestone 6 plan to move progress to a ref or CSS variable still applies.
+- **Scroll re-renders.** Resolved in the Milestone 2 code-only pass below.
 - **Content.** Stations 2–12 are still primitive placeholder geometry (Milestone 3). V3 still carries only condensed professional content (Milestone 5).
 
 ### Files to modify for Milestone 2 (Chapter 01 cinematic laboratory)
@@ -71,3 +71,37 @@ The full suite was not re-run at this checkpoint. Only V3 files and `/observator
 - `src/app/components/luminous-v3/luminous.css`: `.lv3-sky` and `.lv3-wash` for the brighter atmosphere.
 - `tests/luminous-world.spec.cjs`: add canvas-pixel and camera-retrace checks modelled on `tests/universe.spec.cjs`.
 - Reference: `public/luminous-v3/cloud-lab-reference.webp`.
+
+## Milestone 2 — code-only pass (2026-11-17, unverified)
+
+Windows commit memory was exhausted at about 32.2 of 32.5 GB used. The last boot was 16 Nov 11:27:07; repeated restart attempts did not change it. Consequences:
+- The dev server, `next build` and ESLint all crash with out-of-memory errors (`VirtualAlloc failed`, `Zone Allocation failed`, exit 134 or `0xC0000409`).
+- The laboratory has never been rendered or screenshotted. No visual claims are made.
+
+Only changes that do not need a rendered page were made in this pass.
+
+### Implemented, not yet run
+- **Progress bar off React state** (`LuminousExperience.jsx`, `luminous.css`). The scroll handler writes `transform: scaleY(p)` and `aria-valuenow` directly to the DOM. React state now changes only when the active chapter changes, so the page tree no longer re-renders on scroll.
+- **Inspectable camera** (`LuminousWorld.jsx`, `CameraRail`). Each frame writes `data-progress` (3 dp) and `data-camera` (x,y,z, 3 dp) on the canvas, the same contract the V2 universe tests use.
+- **WebGL pre-check** (`LuminousWorld.jsx`, `hasWebGL`). A probe context is created once and then released. Unsupported browsers render `.lv3-static-scene` directly instead of mounting `<Canvas>`. Before this, a failed context creation would throw inside R3F.
+- **Five new tests** (`tests/luminous-world.spec.cjs`, 6 → 11 tests, 33 across the three viewports):
+  - The Chapter 01 camera descends and moves closer between progress 0, 1/24 and 1/12, with no horizontal overflow and no page errors.
+  - One persistent canvas, an exact retrace of the camera path when scrolling back, and no drift after scrolling stops.
+  - Pause freezes the camera while scrolling and `aria-valuenow` keep working; resume moves the camera again.
+  - A WebGL creation failure shows the static scene and all 13 chapters, with no page errors.
+  - A WebGL context loss falls back to the static scene.
+
+### Validation status
+| Check | Result |
+|---|---|
+| `npm run lint` / `npx eslint` on changed files | **Not completed**: ESLint crashed out of memory |
+| `node --check tests/luminous-world.spec.cjs` | Pass |
+| `npm run build`, Playwright, `npm audit` | Not run (insufficient memory) |
+| Screenshots, FPS measurement | Not captured |
+
+### Still required to close Milestone 2
+1. Free memory with a genuine reboot (confirm that `LastBootUpTime` changes), or run the work in a cloud session.
+2. Run lint, build and the V3 suite; fix whatever the new tests expose.
+3. Capture desktop (1440×900) and mobile (390×844) screenshots at progress 0, 1/24 and 1/12, plus one with reduced motion. Review them against the reference, then refine framing, exposure, dome, arm and cube.
+4. Measure FPS and frame times, and record the hardware and browser.
+5. Run the full `npm run test:e2e` suite and `npm audit --omit=dev`.

@@ -214,13 +214,17 @@ function CameraRail({ paused }) {
     const vis=()=>{if(!document.hidden)invalidate();};document.addEventListener("visibilitychange",vis);
     return()=>{window.removeEventListener("scroll",update);window.removeEventListener("resize",update);document.removeEventListener("visibilitychange",vis)};
   },[invalidate]);
-  useFrame(({camera,size})=>{
+  useFrame(({camera,size,gl})=>{
     const t=progressRef.current;
     if(pausedRef.current&&lastRef.current>=0)return;
     applyLensShift(camera,size.width,size.height);
     rail.positionPath.getPoint(t,camera.position);rail.lookPath.getPoint(t,rail.look);
     camera.position.add(size.width<700?COMPACT_CAMERA_OFFSET:WIDE_CAMERA_OFFSET);
     camera.lookAt(rail.look);camera.userData.lv3Progress=t;
+    // Deterministic, inspectable camera state (same contract as the V2 universe tests).
+    const ds=gl.domElement.dataset;
+    ds.progress=t.toFixed(3);
+    ds.camera=camera.position.toArray().map(v=>v.toFixed(3)).join(",");
     lastRef.current=t;
   });
   return null;
@@ -276,8 +280,22 @@ function Scene({ quality, paused }) {
   </>;
 }
 
+function hasWebGL() {
+  if (typeof document === "undefined") return true;
+  try {
+    const probe = document.createElement("canvas");
+    const ctx = probe.getContext("webgl2") || probe.getContext("webgl");
+    ctx?.getExtension("WEBGL_lose_context")?.loseContext();
+    return Boolean(ctx);
+  } catch {
+    return false;
+  }
+}
+
 export default function LuminousWorld({ paused = false, reduced = false, quality = "auto" }) {
-  const [webglFailed,setWebglFailed]=useState(false);
+  // Probe once before mounting <Canvas>: a renderer that cannot get a context throws inside R3F,
+  // so unsupported browsers go straight to the static scene instead.
+  const [webglFailed,setWebglFailed]=useState(()=>!hasWebGL());
   const low=quality==="low"|| (quality==="auto"&&typeof navigator!=="undefined"&&navigator.hardwareConcurrency<=4);
   if(reduced||webglFailed)return <div className="lv3-static-scene" role="img" aria-label="Illustrated bright engineering world static fallback"/>;
   return <div className="lv3-canvas" aria-hidden="true" data-testid="luminous-webgl">
