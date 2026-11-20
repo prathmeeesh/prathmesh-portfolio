@@ -36,5 +36,10 @@ module.exports = defineConfig({
       name: "mobile",
       use: { ...devices["iPhone 13"], defaultBrowserType: "chromium" },
     },
+    // Compatibility projects, only when requested (PW_EXTRA_BROWSERS=1) and the browsers are installed.
+    ...(process.env.PW_EXTRA_BROWSERS ? [
+      { name: "firefox-desktop", use: { ...devices["Desktop Firefox"], viewport: { width: 1440, height: 900 } } },
+      { name: "webkit-mobile", use: { ...devices["iPhone 13"] } },
+    ] : []),
   ],
 });
