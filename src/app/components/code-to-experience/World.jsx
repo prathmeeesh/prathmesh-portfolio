@@ -238,7 +238,19 @@ function Signal({ progressRef, paused }) {
 }
 
 function FrameDirector({ progressRef, paused }) {
-  const { invalidate } = useThree();
+  const { invalidate, gl, scene, camera } = useThree();
+  // Compile every material up front. Rendering is gated to when the world is visible, so lazily
+  // compiled shaders would otherwise all land on its first visible frame (measured ~0.6 s stall).
+  // One warm-up render with culling off also uploads every geometry buffer (compile() does not), so
+  // meshes deep in the corridor are not uploaded on the world's first visible frame either.
+  useEffect(() => {
+    gl.compile(scene, camera);
+    const culled = [];
+    scene.traverse((object) => { if (object.frustumCulled) { culled.push(object); object.frustumCulled = false; } });
+    gl.render(scene, camera);
+    culled.forEach((object) => { object.frustumCulled = true; });
+    invalidate();
+  }, [gl, scene, camera, invalidate]);
   useEffect(() => {
     const update = () => invalidate();
     window.addEventListener("cte:progress", update);

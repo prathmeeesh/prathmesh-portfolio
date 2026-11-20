@@ -43,3 +43,15 @@ next-env.d.ts
 /test-results/
 /playwright-report/
 /artifacts/
+
+# Blender working files (regenerate with blender/scripts/*.py)
+/blender/renders/
+/blender/scenes/
+
+# Downloaded CC0 source assets: re-download from blender/assets/polyhaven/LICENSES.json (URL + SHA-256)
+/blender/assets/polyhaven/hdri/
+/blender/assets/polyhaven/textures/
+
+# Local tooling and generated reports
+/.claude/
+/npm-audit-report.json

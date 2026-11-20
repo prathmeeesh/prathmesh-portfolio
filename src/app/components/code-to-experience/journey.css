@@ -14,8 +14,6 @@
 .cte-stage-vignette{position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,10,18,.73) 0%,rgba(5,10,18,.3) 43%,transparent 82%),linear-gradient(0deg,rgba(5,10,18,.58),transparent 32%,transparent 82%,rgba(5,10,18,.35));}
 .cte-photo{position:absolute;right:7.5vw;top:10%;height:80%;aspect-ratio:1086/1448;max-height:850px;overflow:hidden;border-radius:25px;border:1px solid rgba(255,218,182,.3);transform-origin:0 0;will-change:opacity;z-index:1}
 .cte-photo-image{object-fit:cover}
-/* Unscaled shadow twin of the photo frame, positioned by the scroll director and faded as the zoom starts. */
-.cte-photo-shadow{position:absolute;left:0;top:0;width:0;height:0;pointer-events:none;border-radius:25px;box-shadow:0 36px 130px rgba(0,0,0,.6),0 0 90px rgba(194,112,75,.1);will-change:opacity}
 .cte-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 65%,rgba(4,8,13,.56));}
 .cte-photo-caption{position:absolute;bottom:18px;left:18px;z-index:3;color:rgba(255,245,232,.78);font:10px var(--font-geist-mono),monospace;letter-spacing:.11em}
 .cte-world-layer{position:absolute;inset:0;opacity:0;will-change:opacity}
@@ -34,10 +32,11 @@
 .cte-menu-toggle{display:none}
 .cte-progress{position:fixed;top:79px;left:0;right:0;height:2px;z-index:81;background:rgba(117,199,212,.1)}
 .cte-progress span{height:100%;display:block;background:var(--mint);transform-origin:left;transform:scaleX(0);will-change:transform}
-.cte-rail{position:fixed;right:2.8vw;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:11px}
-.cte-rail button{border:0;background:transparent;padding:4px;display:grid;place-items:center}
-.cte-rail button span{width:18px;height:2px;background:rgba(194,219,231,.36);transition:background .2s,width .2s}
-.cte-rail button.cte-rail-active span{width:31px;background:var(--mint)}
+/* Each chapter link is a 24 px tall target (WCAG 2.2 SC 2.5.8); the dashes keep their size. */
+.cte-rail{position:fixed;right:2.8vw;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:0}
+.cte-rail a{border:0;background:transparent;padding:11px 4px;display:grid;place-items:center}
+.cte-rail a span{width:18px;height:2px;background:rgba(194,219,231,.36);transition:background .2s,width .2s}
+.cte-rail a.cte-rail-active span{width:31px;background:var(--mint)}
 .cte-main{position:relative;z-index:2}
 .cte-section{position:relative;min-height:108svh;scroll-margin-top:80px;display:grid;align-items:center;padding:130px clamp(22px,5.8vw,98px) 120px;pointer-events:none}
 .cte-section-grid{width:100%;max-width:1500px;margin:0 auto;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);align-items:center;gap:clamp(25px,5vw,85px)}
@@ -75,7 +74,6 @@
 .cte-token[data-state=lit]{background:rgba(246,190,130,.2);box-shadow:0 0 0 1px rgba(246,190,130,.65),0 0 22px rgba(246,190,130,.35)}
 .cte-token[data-state=lifted]{opacity:.3;outline:1px dashed rgba(246,190,130,.45);outline-offset:1px}
 .cte-screen{position:absolute;left:0;top:0;transform-origin:0 0;z-index:2;opacity:0;will-change:opacity;border-radius:12px}
-.cte-section-source .cte-editor{will-change:opacity}
 /* Glow and sheen change opacity only: no per-frame blur or custom-property repaints. */
 .cte-screen-glow{position:absolute;inset:-22% -14%;z-index:-1;opacity:0;pointer-events:none;background:radial-gradient(closest-side,rgba(92,233,223,.34),rgba(92,233,223,.12) 55%,transparent)}
 .cte-screen .cte-editor{max-width:none;width:100%;height:100%;aspect-ratio:auto;box-shadow:none}
@@ -114,4 +112,164 @@
 @media(max-width:1100px){.cte-header{gap:15px}.cte-nav{gap:16px}.cte-copy :is(h1,h2){font-size:clamp(44px,5.3vw,68px)}.cte-section-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.cte-projects{grid-template-columns:repeat(2,minmax(0,1fr))}.cte-experience-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:800px){.cte-header{padding:0 22px;height:76px}.cte-nav{display:none;position:absolute;top:76px;left:0;right:0;padding:20px 24px;flex-direction:column;align-items:stretch;gap:14px;background:rgba(6,18,29,.98);border-bottom:1px solid var(--line)}.cte-nav.cte-nav-open{display:flex}.cte-menu-toggle{display:block}.cte-progress{top:75px}.cte-section{min-height:110svh;padding:116px 28px 90px}.cte-section-grid{grid-template-columns:1fr;gap:35px}.cte-copy{max-width:630px}.cte-copy :is(h1,h2){font-size:clamp(45px,8.5vw,68px)}.cte-side{width:100%;justify-content:flex-start}.cte-scene-title{margin-top:0;margin-left:0;text-align:left;border-right:0;border-left:2px solid var(--mint);padding-left:14px}.cte-photo{height:38svh;top:92px;left:0;right:0;margin-inline:auto;border-radius:14px}.cte-section-studio{padding-top:calc(110px + 38svh)}.cte-section-studio .cte-section-grid{min-height:0}.cte-section-studio .cte-copy{display:flex;flex-direction:column}.cte-section-studio .cte-kicker{margin-bottom:16px}.cte-section-studio .cte-actions{order:3;margin-top:22px}.cte-section-studio .cte-description{order:4}.cte-section-studio .cte-hero-proof{order:5}.cte-section-studio .cte-note{order:6}.cte-section-source .cte-side{order:-1}.cte-copy{text-shadow:0 2px 18px rgba(5,10,18,.95),0 0 4px rgba(5,10,18,.8)}.cte-section-source .cte-editor{aspect-ratio:4/3}.cte-stage-vignette{background:linear-gradient(180deg,rgba(5,10,18,.8),transparent 58%,rgba(5,10,18,.6))}.cte-editor{transform:none}.cte-rail{display:none}.cte-section-studio{min-height:200svh}.cte-section-studio .cte-side{display:none}.cte-section-studio .cte-copy{max-width:570px}.cte-section-work .cte-side,.cte-section-about .cte-side{display:none}.cte-section-work,.cte-section-about{padding-bottom:110px}.cte-network{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:520px){.cte-header{padding-inline:18px;gap:7px}.cte-brand{gap:9px;font-size:9px}.cte-logo{font-size:43px}.cte-tools{gap:5px}.cte-tools button,.cte-tools select{font-size:10px;padding:8px 9px}.cte-quality{font-size:0}.cte-menu-toggle{font-size:11px}.cte-section{padding:115px 23px 100px;min-height:112svh}.cte-section-studio{min-height:200svh;padding-top:calc(104px + 38svh)}.cte-copy :is(h1,h2){font-size:clamp(39px,11vw,56px);line-height:1.08}.cte-description{font-size:14px;line-height:1.73}.cte-kicker{font-size:8px;letter-spacing:.1em;line-height:1.5}.cte-photo{border-radius:12px}.cte-hero-proof span{font-size:9px;padding:7px}.cte-button{padding:12px 16px;font-size:11px;min-height:46px}.cte-section-studio .cte-note{max-width:270px}.cte-editor-body{font-size:8.5px;padding:8px 10px 8px 6px;gap:10px}.cte-window-header{padding:8px 12px;font-size:8px}.cte-editor-footer{font-size:7px;padding:5px 10px}.cte-network{grid-template-columns:repeat(2,minmax(0,1fr))}.cte-catalogue{padding:0 12px 12px}.cte-catalogue-header{font-size:10px}.cte-catalogue-bottom{flex-direction:column;align-items:flex-start;gap:8px}.cte-projects,.cte-experience-grid{grid-template-columns:1fr}.cte-project{padding:21px}.cte-bottom{font-size:7px;padding:12px 16px}.cte-footer{font-size:9px}.cte-scene-title{display:none}}
-@media(prefers-reduced-motion:reduce){.cte-site{scroll-behavior:auto}.cte-stage{background:linear-gradient(120deg,#081420,#102a39)}.cte-photo,.cte-photo-shadow{display:none}.cte-world-layer{display:none}.cte-screen,.cte-packet{display:none!important}.cte-section-source .cte-editor{opacity:1!important}.cte-section-studio{min-height:108svh}.cte-button{transition:none}.cte-section{background:linear-gradient(180deg,rgba(7,20,32,.5),rgba(7,20,32,.88));border-bottom:1px solid var(--line)}}
+/* ── Cinematic opening (Milestone 1) ─────────────────────────────────────────
+   The photo is an editorial full-height plate, not a card. Screen corners are mapped through
+   object-fit: cover by opening.js, so crop and object-position can differ per viewport. */
+.cte-photo{right:0;top:0;width:54vw;height:100%;max-height:none;aspect-ratio:auto;border:0;border-radius:0;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 26%),linear-gradient(0deg,transparent 0,#000 16%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 26%),linear-gradient(0deg,transparent 0,#000 16%);
+  -webkit-mask-composite:source-in;mask-composite:intersect}
+.cte-photo-image{object-position:50% 50%}
+.cte-photo-caption{left:auto;right:clamp(20px,4.8vw,90px);bottom:62px;text-align:right}
+.cte-section-studio .cte-copy{max-width:560px}
+
+/* The editor scales with its own width (container units) so the tiny on-photo display and the
+   full-bleed frame are the same layout at different sizes. */
+.cte-window-header{padding:.9cqw 1.3cqw;gap:1.1cqw;font-size:.85cqw}
+.cte-window-dots{gap:.45cqw}.cte-window-dots i{width:.6cqw;height:.6cqw}
+.cte-ide-explorer{padding:1.1cqw .9cqw;gap:.3cqw;font-size:.9cqw}
+.cte-ide-heading{font-size:.7cqw;margin-bottom:.4cqw}
+.cte-ide-indent{padding-left:.9cqw}.cte-ide-indent2{padding-left:2cqw}
+.cte-ide-active{margin-left:-.9cqw;padding-left:2.9cqw}
+.cte-ide-tabs{font-size:.85cqw}.cte-ide-tabs span{padding:.7cqw 1.2cqw}
+.cte-editor-body{font-size:1.45cqw;padding:1.2cqw 1.3cqw 1.2cqw .9cqw;gap:1.4cqw}
+.cte-editor-footer{font-size:.75cqw;padding:.55cqw 1.2cqw}
+.cte-online{width:.45cqw;height:.45cqw;margin-right:.4cqw}
+@container (max-width:800px){
+  .cte-window-header{font-size:1.35cqw;padding:1.3cqw 2cqw}
+  .cte-window-dots i{width:1cqw;height:1cqw}
+  .cte-ide-explorer{font-size:1.45cqw}.cte-ide-heading{font-size:1.1cqw}
+  .cte-ide-tabs{font-size:1.4cqw}
+  .cte-editor-body{font-size:1.95cqw}
+  .cte-editor-footer{font-size:1.2cqw;padding:.9cqw 2cqw}
+}
+@container (max-width:480px){
+  .cte-editor-body{font-size:2.6cqw}.cte-window-header{font-size:2.2cqw}.cte-editor-footer{font-size:1.9cqw}
+}
+.cte-screen{border-radius:0}
+
+/* Pulse ring around the followed call; transform and opacity are set per frame. */
+.cte-packet-ring{position:absolute;left:0;top:0;width:100px;height:24px;border-radius:6px;opacity:0;
+  border:2px solid rgba(246,190,130,.9);box-shadow:0 0 18px rgba(246,190,130,.55),inset 0 0 12px rgba(246,190,130,.25)}
+.cte-packet-label,.cte-packet-core{opacity:0}
+
+/* Inside the screen, chapter 2 becomes a caption plate; the code panel stays in the
+   accessibility tree but the full-bleed editor is what you see. Reduced motion keeps the panel. */
+@media (prefers-reduced-motion:no-preference){
+  .cte-section-source{min-height:108svh;align-items:end;padding-bottom:64px}
+  .cte-section-source .cte-section-grid{grid-template-columns:1fr}
+  .cte-section-source .cte-side{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .cte-section-source .cte-copy{max-width:470px;padding:24px 26px;background:linear-gradient(160deg,rgba(4,10,18,.92),rgba(6,16,28,.82));border:1px solid rgba(120,200,215,.2);border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+  .cte-section-source .cte-copy h2{font-size:clamp(30px,3vw,46px)}
+  .cte-section-source .cte-kicker{margin-bottom:14px}
+  .cte-section-source .cte-description{font-size:14px;line-height:1.7;margin-top:12px}
+  .cte-section-source .cte-note{margin-top:14px}
+}
+
+@media(max-width:800px){
+  .cte-photo{top:76px;left:0;right:0;width:100%;height:44svh;margin:0;
+    -webkit-mask-image:linear-gradient(0deg,transparent 0,#000 22%);mask-image:linear-gradient(0deg,transparent 0,#000 22%)}
+  .cte-photo-image{object-position:50% 64%}
+  .cte-photo-caption{right:16px;bottom:22px;font-size:8px}
+  .cte-section-studio{padding-top:calc(84px + 44svh)}
+  /* Chapter navigation stays available on touch layouts, as a compact bottom rail. */
+  .cte-rail{display:flex;flex-direction:row;top:auto;bottom:6px;right:auto;left:50%;transform:translateX(-50%);gap:0;z-index:75;padding:0 6px;background:rgba(3,10,19,.88);border:1px solid rgba(169,210,224,.16);border-radius:20px}
+  .cte-rail a{width:26px;height:32px;padding:0}
+  .cte-rail a span{width:10px}
+  .cte-rail a.cte-rail-active span{width:18px}
+  .cte-bottom{display:none}
+  .cte-section-source .cte-copy{max-width:none}
+}
+@media(max-width:520px){
+  .cte-section-studio{padding-top:calc(84px + 44svh)}
+  .cte-section-source{padding-bottom:56px}
+}
+/* Rendered pipeline sequence (Milestone 2): one canvas, drawn only when the frame changes. */
+.cte-sequence{position:absolute;inset:0;width:100%;height:100%;opacity:0;will-change:opacity;background:#050a12}
+/* Chapter copy over rendered footage sits on the same caption plate as chapter 2. */
+@media (prefers-reduced-motion:no-preference){
+  .cte-section-build .cte-copy,.cte-section-deploy .cte-copy{max-width:500px;padding:24px 26px;background:linear-gradient(160deg,rgba(4,10,18,.88),rgba(6,16,28,.76));border:1px solid rgba(120,200,215,.2);border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+  .cte-section-build .cte-copy :is(h1,h2),.cte-section-deploy .cte-copy :is(h1,h2){font-size:clamp(32px,3.4vw,52px)}
+  .cte-section-build .cte-description,.cte-section-deploy .cte-description{font-size:15px;line-height:1.7}
+}
+/* Touch layouts: keep footage visible. The rendered stations show the pipeline, so its card grid stays
+   in the accessibility tree only; plates get tighter. */
+@media (prefers-reduced-motion:no-preference) and (max-width:800px){
+  .cte-section-build .cte-pipeline{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .cte-section-build .cte-copy,.cte-section-deploy .cte-copy{padding:18px 18px}
+  .cte-section-build .cte-description,.cte-section-deploy .cte-description{font-size:13.5px;line-height:1.6}
+  .cte-section-build .cte-note,.cte-section-deploy .cte-note{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+}
+/* Crossing the screen surface: LCD sub-pixel stripes, scaled and faded by the director (GPU-only). */
+.cte-pixels{position:absolute;inset:-10%;z-index:3;pointer-events:none;opacity:0;will-change:transform,opacity;
+  background:repeating-linear-gradient(0deg,rgba(2,6,12,.55) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,rgba(255,80,80,.55) 0 1px,rgba(80,255,150,.55) 1px 2px,rgba(90,150,255,.55) 2px 3px,transparent 3px 4px)}
+@media(prefers-reduced-motion:reduce){.cte-site{scroll-behavior:auto}.cte-stage{background:linear-gradient(120deg,#081420,#102a39)}.cte-photo{display:none}.cte-world-layer{display:none}.cte-screen,.cte-packet,.cte-sequence,.cte-pixels{display:none!important}.cte-section-source .cte-editor{opacity:1!important}.cte-section-studio{min-height:108svh}.cte-button{transition:none}.cte-section{background:linear-gradient(180deg,rgba(7,20,32,.5),rgba(7,20,32,.88));border-bottom:1px solid var(--line)}}
+
+/* ── Milestone 3: screen crossing, portrait framing, reading backdrop ───────────────────────────────
+   Inside the photographed display the editor IS the screen's pixels: no window border, radius or shadow;
+   a soft inner vignette stands in for the bezel's shading (it maps through the same homography). */
+.cte-screen .cte-editor{border:0;border-radius:0}
+.cte-screen-sheen{box-shadow:inset 0 0 26px rgba(0,0,0,.6)}
+/* Cover-glass reflection that sweeps across as the camera reaches the screen (transform/opacity only). */
+.cte-glass{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.cte-glass i{position:absolute;top:-25%;bottom:-25%;left:0;width:34%;opacity:0;will-change:transform,opacity;
+  background:linear-gradient(90deg,transparent,rgba(200,240,255,.12) 38%,rgba(255,255,255,.3) 50%,rgba(200,240,255,.12) 62%,transparent)}
+/* Sub-pixels rush past around the followed call rather than as a flat overlay. */
+.cte-pixels{-webkit-mask-image:radial-gradient(ellipse 60% 55% at 50% 52%,#000 0,transparent 75%);mask-image:radial-gradient(ellipse 60% 55% at 50% 52%,#000 0,transparent 75%)}
+/* After the rendered journey: the gateway frame stays as a dimmed, slowly drifting backdrop for reading. */
+.cte-sequence{transform-origin:50% 45%;will-change:opacity,transform}
+.cte-dim{position:absolute;inset:0;opacity:0;pointer-events:none;will-change:opacity;
+  background:linear-gradient(90deg,rgba(4,9,16,.9) 0%,rgba(4,9,16,.62) 52%,rgba(4,9,16,.42) 100%)}
+@media(max-width:800px){.cte-dim{background:linear-gradient(0deg,rgba(4,9,16,.92) 0%,rgba(4,9,16,.7) 55%,rgba(4,9,16,.5) 100%)}}
+/* Portrait build/deploy chapters: the plate is pinned in the lower reading band while the rendered artifact
+   travels in the upper part of the frame (the portrait Blender camera keeps it at ~40% height). */
+@media (prefers-reduced-motion:no-preference) and (max-width:800px){
+  .cte-section-build,.cte-section-deploy{min-height:190svh;align-items:stretch;padding-top:0;padding-bottom:64px}
+  .cte-section-build .cte-section-grid,.cte-section-deploy .cte-section-grid{align-items:start}
+  .cte-section-build .cte-copy,.cte-section-deploy .cte-copy{position:sticky;top:max(52svh,calc(100svh - 380px))}
+  .cte-section-source .cte-description{font-size:13px;line-height:1.6}
+}
+@media(prefers-reduced-motion:reduce){.cte-glass,.cte-dim{display:none}}
+
+/* ── Milestone 4: runtime and library films, frontend assembly, Folio catalogue ──────────────────────
+   Copy over the runtime and library films sits on the same caption plate as build/deploy; on portrait the
+   plate is pinned in the lower reading band while the followed request travels in the upper frame. */
+@media (prefers-reduced-motion:no-preference){
+  :is(.cte-section-request,.cte-section-backend,.cte-section-database,.cte-section-output,.cte-section-experience) .cte-copy{max-width:500px;padding:24px 26px;background:linear-gradient(160deg,rgba(4,10,18,.88),rgba(6,16,28,.76));border:1px solid rgba(120,200,215,.2);border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+  :is(.cte-section-request,.cte-section-backend,.cte-section-database,.cte-section-output,.cte-section-experience) .cte-copy :is(h1,h2){font-size:clamp(32px,3.4vw,52px)}
+  :is(.cte-section-request,.cte-section-backend,.cte-section-database,.cte-section-output,.cte-section-experience) .cte-description{font-size:15px;line-height:1.7}
+}
+@media (prefers-reduced-motion:no-preference) and (max-width:800px){
+  :is(.cte-section-request,.cte-section-backend,.cte-section-database,.cte-section-experience){min-height:190svh;align-items:stretch;padding-top:0;padding-bottom:64px}
+  :is(.cte-section-request,.cte-section-backend,.cte-section-database,.cte-section-experience) .cte-section-grid{align-items:start}
+  :is(.cte-section-request,.cte-section-backend,.cte-section-database,.cte-section-experience) .cte-copy{position:sticky;top:max(52svh,calc(100svh - 400px));padding:18px}
+  :is(.cte-section-request,.cte-section-backend,.cte-section-database,.cte-section-output,.cte-section-experience) .cte-description{font-size:13.5px;line-height:1.6}
+  .cte-section-backend .cte-network{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  :is(.cte-section-request,.cte-section-backend,.cte-section-database,.cte-section-experience) .cte-side{display:none}
+}
+.cte-network{grid-template-columns:repeat(7,minmax(0,1fr));max-width:760px}
+@media(max-width:1100px){.cte-network{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* Folio catalogue: category chips, interface / JSON toggle, the request line, availability. */
+.cte-catalogue{--assembly:1;position:relative}
+.cte-chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 2px}
+.cte-chips button,.cte-view-toggle button{font:600 11px/1 inherit;font-family:inherit;padding:8px 12px;min-height:32px;border:1px solid #b8ced1;border-radius:999px;background:#fff;color:#25485a;cursor:pointer}
+.cte-chips button[aria-pressed=true],.cte-view-toggle button[aria-pressed=true]{background:#123f50;border-color:#123f50;color:#fff}
+.cte-chips button:focus-visible,.cte-view-toggle button:focus-visible,.cte-json:focus-visible,.cte-results:focus-visible{outline:2px solid #117e83;outline-offset:2px}
+.cte-view-toggle{display:flex;gap:6px;margin-top:10px}
+.cte-request-line{margin:10px 0 0;font:10.5px/1.5 var(--font-geist-mono),monospace;color:#3d6b78;overflow-wrap:anywhere}
+.cte-request-line code{font:inherit}
+.cte-results{max-height:330px;overflow:auto;padding-right:2px}
+.cte-result-count{font-size:11px;color:#547f83;margin:0}
+.cte-json{margin:14px 0 16px;max-height:330px;overflow:auto;background:#0b1b26;color:#cfe8ef;border-radius:8px;padding:12px 14px;font:11px/1.55 var(--font-geist-mono),monospace;white-space:pre}
+.cte-book-status{font-size:9px;font-weight:700;color:#1b6e48;background:#e3f4ea;border-radius:999px;padding:4px 8px;white-space:nowrap}
+.cte-book-cover[data-category=Fiction]{background:linear-gradient(135deg,#6a2a1e,#c97a4f)}
+.cte-book-cover[data-category=History]{background:linear-gradient(135deg,#4d3b17,#b8933f)}
+.cte-book-cover[data-category=Science]{background:linear-gradient(135deg,#1d3a63,#5f8fd1)}
+.cte-book-cover[data-category=Business]{background:linear-gradient(135deg,#2f2b4f,#7d74c4)}
+/* Frontend assembly: the JSON response resolves into the interface as the result chapter arrives (--assembly 0→1,
+   set by the director; transform/opacity only). Without motion the interface is simply there. */
+.cte-assembly{position:absolute;left:22px;right:22px;top:70px;z-index:2;pointer-events:none;opacity:calc(1 - var(--assembly));transform:translateY(calc(var(--assembly) * -16px)) scale(calc(1 + var(--assembly) * .05));transform-origin:50% 0}
+.cte-assembly-json{margin:0;background:#0b1b26;color:#f6be82;border-radius:8px;padding:14px 16px;font:12px/1.6 var(--font-geist-mono),monospace;box-shadow:0 20px 60px rgba(0,0,0,.35);overflow:hidden}
+.cte-catalogue-ui{opacity:var(--assembly);transform:translateY(calc((1 - var(--assembly)) * 22px))}
+@media(prefers-reduced-motion:reduce){.cte-assembly{display:none}.cte-catalogue-ui{opacity:1;transform:none}}
+@media(max-width:520px){.cte-assembly{left:12px;right:12px}.cte-assembly-json{font-size:10px}.cte-chips button,.cte-view-toggle button{padding:8px 10px}}

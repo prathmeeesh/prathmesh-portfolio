@@ -1,4 +1,5 @@
-// Records a ~16 s scroll through the opening (t = 0 → 2, then rewind to 0) as WebM.
+// Records the opening and the rendered pipeline (t = 0 → end chapter, then rewind to 0) as WebM.
+// CTE_RECORD_TO picks the end chapter id (default: request, i.e. t = 4).
 // Usage: node Scripts/record-cte-transition.cjs   (CTE_URL overrides the server URL)
 const { chromium } = require("@playwright/test");
 const fs = require("node:fs");
@@ -13,7 +14,7 @@ async function record(browser, name, viewport) {
   const page = await context.newPage();
   await page.goto(BASE, { waitUntil: "load" });
   await page.waitForTimeout(1500);
-  const end = await page.evaluate(() => document.getElementById("build").getBoundingClientRect().top + scrollY);
+  const end = await page.evaluate(id => document.getElementById(id).getBoundingClientRect().top + scrollY, process.env.CTE_RECORD_TO || "request");
   const scrub = async (from, to, ms) => {
     const steps = Math.round(ms / 33);
     for (let i = 1; i <= steps; i++) {
@@ -23,9 +24,10 @@ async function record(browser, name, viewport) {
       await page.waitForTimeout(33);
     }
   };
-  await scrub(0, end, 11000);
+  // ~2.4 s per viewport of scroll (at least 20 s), so the three films keep their pace in longer recordings.
+  await scrub(0, end, Math.max(20000, Math.round(end / viewport.height * 2400)));
   await page.waitForTimeout(800);
-  await scrub(end, 0, 4000);
+  await scrub(end, 0, Math.max(6000, Math.round(end / viewport.height * 700)));
   await page.waitForTimeout(800);
   const video = page.video();
   await context.close();

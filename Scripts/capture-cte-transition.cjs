@@ -22,6 +22,11 @@ async function scrollToProgress(page, t) {
     window.scrollTo({ top: Math.round(y), behavior: "instant" });
   }, t);
   await page.waitForTimeout(350);
+  // When the rendered sequence is on screen, wait until the exact frame (not a nearby fallback) is drawn.
+  await page.waitForFunction(() => {
+    const c = document.querySelector("[data-testid=cte-sequence]");
+    return !c || Number(getComputedStyle(c).opacity) === 0 || c.dataset.frame === c.dataset.wanted;
+  }, null, { timeout: 20000 }).catch(() => {});
 }
 
 async function run(browser, name, viewport) {
@@ -50,6 +55,7 @@ async function run(browser, name, viewport) {
   try {
     await run(browser, "desktop", { width: 1440, height: 900 });
     await run(browser, "mobile", { width: 390, height: 844 });
+    if (!process.env.CTE_SKIP_TABLET) await run(browser, "tablet", { width: 768, height: 1024 });
     console.log("Saved to", OUTPUT);
   } finally { await browser.close(); }
 })().catch(error => { console.error(error); process.exitCode = 1; });

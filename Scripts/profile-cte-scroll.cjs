@@ -1,12 +1,13 @@
 // Frame-time profile of the /code-to-experience scroll on this machine's GPU.
-// Usage: node Scripts/profile-cte-scroll.cjs [--headless] [--throttle=4] [--to=3]
+// Usage: node Scripts/profile-cte-scroll.cjs [--headed] [--throttle=4] [--to=3]
 //   CTE_URL overrides the server (default: production server on 3300).
 // Reports the WebGL renderer so software rendering (SwiftShader) is never mistaken for a GPU result.
 const { chromium } = require("@playwright/test");
 
 const URL = process.env.CTE_URL || "http://127.0.0.1:3300/code-to-experience";
 const arg = (name, fallback) => { const hit = process.argv.find(a => a.startsWith(`--${name}=`)); return hit ? hit.slice(name.length + 3) : fallback; };
-const HEADLESS = process.argv.includes("--headless");
+// Headless by default: it still uses the GPU (ANGLE/D3D11) and cannot be disturbed by desktop input.
+const HEADLESS = !process.argv.includes("--headed");
 const THROTTLE = Number(arg("throttle", 1));
 const TO = Number(arg("to", 3));
 const ALL_VIEWPORTS = [
@@ -21,6 +22,8 @@ async function profile(browser, { name, ...options }) {
   const page = await context.newPage();
   const cdp = await context.newCDPSession(page);
   if (THROTTLE > 1) await cdp.send("Emulation.setCPUThrottlingRate", { rate: THROTTLE });
+  // A/B hook: --block=cinematic aborts the rendered-sequence downloads (page falls back to WebGL only).
+  if (arg("block")) await page.route(`**/${arg("block")}/**`, route => route.abort());
   await page.goto(URL, { waitUntil: "load" });
   // Experiment hook: --css="selector{...}" injects a stylesheet before profiling.
   if (arg("css")) await page.addStyleTag({ content: arg("css") });
